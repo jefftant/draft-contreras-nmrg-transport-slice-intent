@@ -1,0 +1,16 @@
+Meeting July 8, 2020
+
+Next steps:
+.- submit the draft with the changes from Jeff [Luis]
+.- ask for presentation slot [Luis]
+.- prepare and circulate a first version of the presentation to comment [Luis]
+.- move the draft to git repository [Jeff]
+.- work on ToC for potential paper to IEEE Comm Mag or alike [Kostas]
+
+For next steps (also to include into the presentation) we will refer to the assurance part linking with the overall lifecycle of the intent, which is not covered today in the draft. Also the idea is to consolidate the draft as one of the use cases to be adopted by NMRG. Finally the idea is to link with the TEAS work on transport slicing, completing the picture.
+
+@Kostas, Panagiotis: the work in TEAS we are referring to is:
+https://www.ietf.org/id/draft-nsdt-teas-transport-slice-definition-02.txt this is the definitions draft, new version is progressing
+https://www.ietf.org/id/draft-nsdt-teas-ns-framework-03.txt his is the framework draft, intended to cover more technical / implementation details
+in addition to that you cantake a look to this other
+https://www.ietf.org/id/draft-contreras-teas-slice-nbi-01.txt this intends to identify attributes / parameters that would be consumed as NBI of a transport slicer, new version is progressing
