@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE rfc SYSTEM 'rfc2629.dtd' [
+    <!ENTITY rfc2119 PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml'>
+
+
+<!--
+<!ENTITY I-D.homma-slice-provision-models PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.homma-slice-provision-models.xml'>
+-->
+
+
+<!ENTITY I-D.contreras-teas-slice-nbi PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.contreras-teas-slice-nbi.xml'>
+<!ENTITY I-D.irtf-nmrg-ibn-concepts-definitions PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.irtf-nmrg-ibn-concepts-definitions.xml'>
+<!ENTITY I-D.nsdt-teas-transport-slice-definition PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.nsdt-teas-transport-slice-definition.xml'>
+
+
+
+<!--
+    <!ENTITY rfc8456 PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml/reference.RFC.8456.xml'>
+
+
+<!ENTITY I-D.ietf-spring-srv6-network-programming PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-spring-srv6-network-programming.xml'>
+<!ENTITY I-D.ietf-detnet-architecture PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.ietf-detnet-architecture.xml'>
+-->
+
+<!--
+     <!ENTITY rfc4605 PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4605.xml'>
+    <!ENTITY rfc5798 PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5798.xml'>
+    <!ENTITY rfc7287 PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml/reference.RFC.7287.xml'>
+
+<!ENTITY I-D.haleplidis-sdnrg-layer-terminology PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.haleplidis-sdnrg-layer-terminology.xml'>
+-->
+]>
+
+
+<?rfc toc="yes"?>
+<?rfc tocompact="yes"?>
+<?rfc tocdepth="5"?>
+<?rfc tocindent="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes"?>
+<?rfc comments="yes"?>
+<?rfc inline="yes"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+
+<rfc category="info" docName="draft-contreras-nmrg-transport-slice-intent-01"
+     ipr="trust200902">
+  <front>
+      <title abbrev="Transport Slice Intent">
+      Transport Slice Intent</title>
+
+    <!-- AUTHORS -->
+    <author fullname="Luis M. Contreras"
+            initials="LM."
+            surname="Contreras">
+      <organization abbrev="Telefonica">
+        Telefonica
+      </organization>
+      <address>
+        <postal>
+          <street>Ronda de la Comunicacion, s/n</street>
+          <street>Sur-3 building, 3rd floor</street>
+          <city>Madrid</city>
+          <code>28050</code>
+          <country>Spain</country>
+        </postal>
+        <email>luismiguel.contrerasmurillo@telefonica.com</email>
+         <uri>http://lmcontreras.com/</uri>
+      </address>
+    </author>
+
+    <author fullname="Panagiotis Demestichas"
+            initials="P."
+            surname="Demestichas">
+      <organization abbrev="WINGS">
+        WINGS ICT Solutions
+      </organization>
+      <address>
+        <postal>
+          <street> </street>
+          <city> </city>
+          <code> </code>
+          <country>Greece</country>
+        </postal>
+        <email>pdemest@wings-ict-solutions.eu</email>
+       </address>
+    </author>
+
+    <author fullname="Jeff Tantsura"
+            initials="J."
+            surname="Tantsura">
+      <organization abbrev="Apstra, Inc.">
+        Apstra, Inc.
+      </organization>
+      <address>
+        <postal>
+          <street/>
+          <city/>
+          <country/>
+        </postal>
+        <email>jefftant.ietf@gmail.com</email>
+      </address>
+    </author>
+    <date month="July" year="2020" />
+
+    <area>Internet</area>
+
+    <workgroup>NMRG</workgroup>
+
+    <abstract>
+
+    <t>
+Slicing at the transport network is expected to be offered as part of end-to-end network slices, fostered by the 
+introduction of new services such as 5G. This document explores the usage of intent technologies for requesting 
+transport slices.
+   </t>
+
+    </abstract>
+
+  </front>
+
+  <middle>
+
+<!-- 1. Introduction -->
+    <section anchor="sec:introduction" title="Introduction">
+
+    <t>
+Network slicing is emerging as the future model for service offering in telecom operator networks. 
+Conceptually, network slicing provides a customer with an apparent dedicated network built on top 
+of logical (i.e. virtual) and/or physical functions and resources supported by a shared infrastructure, 
+provided by one or more telecom operators.
+   </t>
+
+    <t>
+The concept of network slicing has been largely fostered by the advent of 5G services that are 
+expected to be deployed on top of different kind of slices, each built to support specific characteristics 
+(extreme low latency, high bandwidth, etc).
+    </t>
+
+    <t>
+As part of an end-to-end network slice it is expected to have a number of transport network slices 
+providing the necessary connectivity to the rest of components of the end-to-end slice, e.g., mobile 
+packet core slice.
+    </t>
+
+    <t>
+For a definition of a transport slice refer to <xref target="I-D.nsdt-teas-transport-slice-definition" />. The following paragraph is directly taken from it: “A transport 
+slice is built based on a request from a higher operations system.  The interface to higher operations systems 
+should express the needed connectivity in a technology-agnostic way, and slice customers do not need to 
+recognize concrete configurations based on the technologies (e.g being more declarative than imperative). 
+The request to instantiate a transport slice is represented with some indicators such as SLO, and technologies 
+are selected and managed accordingly.”
+    </t>
+<t>
+Intent is a high-level, declarative goal that operates at the level of a network and services it provides, not individual devices.
+It is used to define outcomes and high-level operational goals.
+</t>
+    <t>
+In consequence, it seems very convenient to apply the intent-based mechanisms for the provision of transport 
+network slices, providing the adequate level of abstraction towards the transport network control and management 
+planes.
+    </t>
+
+    <t>
+This document leverages current industry trends in the definition of end-to-end 
+network slices. The final objective is to describe intents that can be used to flexibly declare the operational aspects and goals 
+of a transport network slice, meaning that the customer could declare what kind of transport slice is needed (the outcome) and 
+not how to achieve the goals of the transport slice.
+    </t>
+
+    </section>
+<!-- end Introduction -->
+
+
+<!--
+
+      <t>
+
+        <list style="hanging">
+
+         <t hangText="Upstream interface:">
+   A proxy device's interface in the direction of the root of the
+   tree. Also called the "Host interface".
+	</t>
+
+         <t hangText="Downstream interface:">
+   Each of a proxy device's interfaces that is not in the direction
+   of the root of the tree. Also called the "Router interfaces".
+	</t>
+
+        </list>
+
+      </t>
+
+-->
+
+
+<!-- Section 2. Transport slice intent -->
+
+<section title="Transport slice intent">
+
+    <t>
+As stated in <xref target="I-D.irtf-nmrg-ibn-concepts-definitions" />, “Intent is a higher-level declarative policy that operates at the level of a network and services 
+it provides, not individual devices. It is used to define outcomes and high-level operational goals, without the 
+need to enumerate specific events, conditions, and actions”.
+   </t>
+
+    <t>
+When applied to transport networks, this implies that an intent for transport slices should provide the necessary 
+abstraction with respect to implementation details, including the final devices (or resources) involved, and be 
+focused on the characteristics and performance expectations related to it.
+   </t>
+
+   <t>
+With that intent it can be expected that the intent based system can fulfill and assure the requested transport 
+network slice, triggering initial configurations at the time of initial provisioning and corrective actions during the 
+transport slice lifetime.
+   </t>
+
+</section>
+
+<!-- End of Section 2. Transport slice intent -->
+
+
+
+<!-- Section 3. Foundation of transport slice intents -->
+
+<section title="Foundation of transport slice intents">
+
+    <t>
+The industrial interest around 5G is accelerating network deployments and operational changes.
+   </t>
+
+   <t>
+With this respect, the GSMA has been developing a universal blueprint that can be used by any vertical 
+customer to request the deployment of a network slice instance (NSI) based on a specific set of service 
+requirements.  Such a blueprint is a network slice descriptor called Generic Slice Template (GST) <xref target="GSMA" />.  
+The GST contains multiple attributes that can be used to characterize a network slice.  A particular 
+template filled with values generates a specific Network Slice Type(NEST).
+   </t>
+
+   <t>
+Such templates refer to the end-to-end network slice, including the transport part. Despite the fact that some 
+of the values would not have applicability for the transport network, others do. An analysis of the relevant 
+attributes is performed in <xref target="I-D.contreras-teas-slice-nbi" />.
+   </t>
+
+   <t>
+According to 3GPP propositions <xref target="TS28.541" />, an upper 3GPP Management System interacts with the transport 
+network for establishing the necessary slices at the transport level. Such interaction can be expected 
+to happen using the transport slice intent, described to an intent-based system (IBS) in the transport 
+network part. Then, according to the intent lifecycle in <xref target="I-D.irtf-nmrg-ibn-concepts-definitions" />, the IBS, after recognizing the intent, will proceed 
+to translate it in order to interact with a transport slice controller by using a NBI as proposed in <xref target="I-D.contreras-teas-slice-nbi" />.
+   </t>
+
+</section>
+
+<!-- End of Section 3. Foundation of transport slice intents -->
+
+
+<!-- Section 4. Mechanisms for translating transport slice intents -->
+
+<section title="Mechanisms for translating transport slice intents">
+
+    <t>
+This section describes approaches for implementing mechanisms to translate transport slice intents.
+   </t>
+
+<!-- Section 4.1. Translation approaches and interaction with the upper systems -->
+<section title="Translation approaches and interaction with the upper systems">
+
+    <t>
+A suite of mechanisms will be required to allow instantiation of the user’s intent into a transport slice. 
+In order to be able to deliver an end2end Intent driven slice - a well defined set of context aware attributes that allow unambiguous instantiation of the intent should be agreed upon.
+A combination of a structured set of attributes communicated between an IBN and an upper layer system with user input would allow an IBN to have intent modeled and reason about its completeness/validity.
+Translation approaches and interaction with the upper systems might benefit from Natural Language Processing (NLP) technics that are needed for enabling high level expression of requirements found missing.
+
+The goal would be to identify and classify the answers for as many fields as possible from the Generic Slice Template (GST), based on the free text / speech 
+provided by the user. As it is highly unlikely that the minimum set of fields to properly define a transport slice (geo-temporal 
+characteristics, performance characteristics, SLO and SLA properties) will be fulfilled in this first step, a follow up two-step approach 
+might need to be implemented.
+   </t>
+
+      <t>
+          <list style="symbols">
+            <t>The minimum missing fields from the GST have to be identified and appropriate questions have to be generated 
+                  (e.g. based on a pool of available questions correlated with each field, or based on AI approaches).
+            </t>
+
+            <t>An iterative interrogation phase will be initiated towards the user using the previously generated questions, 
+                  until the user provides all the missing information, so the intent can be modeled accordingly.
+            </t>
+
+          </list>
+      </t>
+
+      <t>
+Interaction with the user and higher-up systems can potentially be further improved by utilizing Machine Learning techniques.
+      </t>
+
+
+</section>
+<!-- End of Section 4.1. Translation approaches and interaction with the upper systems -->
+
+
+<!-- Section 4.2.  Intent-based system suite -->
+<section title="Intent-based system suite">
+
+    <t>
+In order to consolidate on the set of devices, technologies and resources to be used, a combination of deterministic or stochastic computation approaches will be needed. 
+Deterministic approaches will rely on mathematical models and respective algorithms. 
+Stochastic approaches will rely on technologies like machine learning. Their goal will be to learn from experience, so as to optimize 
+future decisions from the viewpoint of speed and reliability. The target of learning will be related to the service behavior and to the 
+anticipated network status in the area and time period of the service provision.
+   </t>
+
+</section>
+<!-- End of Section 4.2.  Intent-based system suite -->
+
+</section>
+
+<!-- End of Section 4. Mechanisms for translating transport slice intents -->
+
+
+<!-- Security Considerations -->
+     <section anchor="Security" title="Security Considerations">
+
+       <t>
+To be done.
+      </t>
+
+     </section>
+<!-- end Security Considerations -->
+
+
+<!-- IANA Considerations -->
+    <section anchor="IANA" title="IANA Considerations">
+
+      <t>
+This draft does not include any IANA considerations
+      </t>
+
+    </section>
+<!-- end IANA Considerations -->
+
+
+</middle>
+
+
+<back>
+
+    <references title="References">
+
+     <reference anchor="GSMA">
+        <front>
+          <title>Generic Network Slice Template, version 2.0</title>
+          <author></author>
+          <date month="October" year="2019"/>
+        </front>
+        <seriesInfo name="NG.116" value=""/>
+      </reference>
+
+      &I-D.contreras-teas-slice-nbi;
+      &I-D.irtf-nmrg-ibn-concepts-definitions;
+      &I-D.nsdt-teas-transport-slice-definition;
+
+     <reference anchor="TS28.541">
+        <front>
+          <title>TS 28.541 Management and orchestration; 5G Network Resource Model (NRM); Stage 2 and stage 3 (Release 16) V16.2.0.</title>
+          <author></author>
+          <date month="September" year="2019"/>
+        </front>
+        <seriesInfo name="3GPP TS 28.541 V16.2.0" value=""/>
+      </reference>
+<!--
+      &rfc5798;
+      &rfc7287; 
+
+-->
+<!--
+<xref target="I-D.homma-slice-provision-models" />
+-->
+
+    </references>
+
+<!-- Acknowledgments -->
+    <section numbered="false" anchor="ACK" title="Acknowledgments">
+
+      <t>
+This work has been partly funded by the European Commission through the H2020 project 5G-EVE (Grant Agreement no. 815074).
+      </t>
+
+    </section>
+<!-- end Acknowledgments -->
+
+<!-- Contributors -->
+    <section numbered="false" anchor="Contrib" title="Contributors">
+
+      <t>
+Kostas Tsagkaris, Kostas Trichias, Vassilis Foteinos, and Thanasis Gkiolias (all from WINGS ICT Solutions) have also contributed to this 
+work.
+
+      </t>
+
+    </section>
+<!-- end Contributors -->
+
+  </back>
+ 
+
+</rfc>
