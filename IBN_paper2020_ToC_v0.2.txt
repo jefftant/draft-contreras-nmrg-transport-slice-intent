@@ -1,0 +1,27 @@
+IBN Paper Table of Contents
+
+1.	Introduction
+	a.	5G and various vertical services (eMBB, URLLC, mMTC)
+		i.	Delivering / supporting connectivity, automation and smartness 
+	b.	Convergence with cloud and edge, VNF/NFV, SDN, slicing, etc.
+	c.	The need for scaling (towards verticals) ….
+	d.	IBN as a solution …. .
+2.	Background & related work
+	a.	Standardization (3GPP, IETF, GSMA, ETSI)
+	b.	Research projects (5G-EVE, 5G-Transformer, etc.)
+	c.	Other (?)
+3.	IBN Enablers
+	a.	AI/ML
+	b.	Natural Language Processing (NLP) (incl. iterative interrogation)
+	c.	Data models
+	d.	Templates / Bleuprints (GST, 5G-EVE blueprints, etc.)
+4.	IBN phases
+	a.	Translation (walk-through and expected outcome)
+		(Acquire necessary information from unskilled vertical user (Type of service, geo-temporal characteristics of service, KPIs, monitoring & security/privacy preferences))
+	b.	Instantiation / Configuration
+		(Create, deploy and configure necessary slices, components, VNFs, etc. according to requirements from user (Reserve and deploy network components, functions, interconnections, etc., define SLA, define LCM aspects)
+		Use of Blueprints and templates).
+	c.	Life Cycle Management (LCM)
+		(Continuous monitoring of provisioned performance to ensure compliance with the user’s requirements  reconfigurations if necessary to provide the guaranteed SLA).
+5.	Challenges 
+6.	Conclusions
