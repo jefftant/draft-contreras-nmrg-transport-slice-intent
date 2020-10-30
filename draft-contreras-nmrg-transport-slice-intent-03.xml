@@ -56,7 +56,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 
-<rfc category="info" docName="draft-contreras-nmrg-transport-slice-intent-03"
+<rfc category="info" docName="draft-contreras-nmrg-transport-slice-intent-04"
      ipr="trust200902">
   <front>
       <title abbrev="IETF Network Slice Intent">
@@ -114,7 +114,7 @@
         <email>jefftant.ietf@gmail.com</email>
       </address>
     </author>
-    <date month="July" year="2020" />
+    <date month="November" year="2020" />
 
     <area>Internet</area>
 
