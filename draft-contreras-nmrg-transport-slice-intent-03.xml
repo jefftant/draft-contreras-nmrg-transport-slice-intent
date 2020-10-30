@@ -15,8 +15,8 @@
       'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.contreras-teas-slice-nbi.xml'>
 <!ENTITY I-D.irtf-nmrg-ibn-concepts-definitions PUBLIC ''
       'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.irtf-nmrg-ibn-concepts-definitions.xml'>
-<!ENTITY I-D.nsdt-teas-transport-slice-definition PUBLIC ''
-      'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.nsdt-teas-transport-slice-definition.xml'>
+<!ENTITY I-D.nsdt-teas-ietf-network-slice-definition PUBLIC ''
+      'http://xml.resource.org/public/rfc/bibxml3/reference.I-D.nsdt-teas-ietf-network-slice-definition.xml'>
 
 
 
@@ -59,8 +59,8 @@
 <rfc category="info" docName="draft-contreras-nmrg-transport-slice-intent-03"
      ipr="trust200902">
   <front>
-      <title abbrev="Transport Slice Intent">
-      Transport Slice Intent</title>
+      <title abbrev="IETF Network Slice Intent">
+      IETF Network Slice Intent</title>
 
     <!-- AUTHORS -->
     <author fullname="Luis M. Contreras"
@@ -125,7 +125,7 @@
     <t>
 Slicing at the transport network is expected to be offered as part of end-to-end network slices, fostered by the 
 introduction of new services such as 5G. This document explores the usage of intent technologies for requesting 
-transport slices.
+IETF network slices.
    </t>
 
     </abstract>
@@ -151,25 +151,22 @@ expected to be deployed on top of different kind of slices, each built to suppor
     </t>
 
     <t>
-As part of an end-to-end network slice it is expected to have a number of transport network slices 
+As part of an end-to-end network slice it is expected to have a number of network slices at transport level (referred as IETF network slices)  
 providing the necessary connectivity to the rest of components of the end-to-end slice, e.g., mobile 
 packet core slice.
     </t>
 
     <t>
-For a definition of a transport slice refer to <xref target="I-D.nsdt-teas-transport-slice-definition" />. The following paragraph is directly taken from it: “A transport 
-slice is built based on a request from a higher operations system.  The interface to higher operations systems 
-should express the needed connectivity in a technology-agnostic way, and slice customers do not need to 
-recognize concrete configurations based on the technologies (e.g being more declarative than imperative). 
-The request to instantiate a transport slice is represented with some indicators such as SLO, and technologies 
-are selected and managed accordingly.”
+For a definition of an IETF network slice refer to <xref target="I-D.nsdt-teas-ietf-network-slice-definition" />. The following paragraph is directly taken from it: “An IETF Network 
+Slice is a logical network topology connecting a number of endpoints with a set of shared or dedicated network resources, that are used to satisfy specific Service Level Objectives
+(SLOs).”
     </t>
 <t>
 Intent is a high-level, declarative goal that operates at the level of a network and services it provides, not individual devices.
 It is used to define outcomes and high-level operational goals.
 </t>
     <t>
-In consequence, it seems very convenient to apply the intent-based mechanisms for the provision of transport 
+In consequence, it seems very convenient to apply the intent-based mechanisms for the provision of IETF 
 network slices, providing the adequate level of abstraction towards the transport network control and management 
 planes.
     </t>
@@ -177,8 +174,8 @@ planes.
     <t>
 This document leverages current industry trends in the definition of end-to-end 
 network slices. The final objective is to describe intents that can be used to flexibly declare the operational aspects and goals 
-of a transport network slice, meaning that the customer could declare what kind of transport slice is needed (the outcome) and 
-not how to achieve the goals of the transport slice.
+of an IETF network slice, meaning that the customer could declare what kind of IETF network slice is needed (the outcome) and 
+not how to achieve the goals of the IETF network slice.
     </t>
 
     </section>
@@ -210,7 +207,7 @@ not how to achieve the goals of the transport slice.
 
 <!-- Section 2. Transport slice intent -->
 
-<section title="Transport slice intent">
+<section title="IETF network slice intent">
 
     <t>
 As stated in <xref target="I-D.irtf-nmrg-ibn-concepts-definitions" />, "Intent is a declaration of operational goals that
@@ -221,15 +218,15 @@ As stated in <xref target="I-D.irtf-nmrg-ibn-concepts-definitions" />, "Intent i
    </t>
 
     <t>
-When applied to transport networks, this implies that an intent for transport slices should provide the necessary 
+When applied to transport networks, this implies that an intent for IETF network slices should provide the necessary 
 abstraction with respect to implementation details, including the final devices (or resources) involved, and be 
 focused on the characteristics and performance expectations related to it.
    </t>
 
    <t>
-With that intent it can be expected that the intent based system can fulfill and assure the requested transport 
+With that intent it can be expected that the intent based system can fulfill and assure the requested IETF 
 network slice, triggering initial configurations at the time of initial provisioning and corrective actions during the 
-transport slice lifetime.
+IETF network slice lifetime.
    </t>
 
 </section>
@@ -240,7 +237,7 @@ transport slice lifetime.
 
 <!-- Section 3. Foundation of transport slice intents -->
 
-<section title="Foundation of transport slice intents">
+<section title="Foundation of IETF network slice intents">
 
     <t>
 The industrial interest around 5G is accelerating network deployments and operational changes.
@@ -263,9 +260,9 @@ attributes is performed in <xref target="I-D.contreras-teas-slice-nbi" />.
    <t>
 According to 3GPP propositions <xref target="TS28.541" />, an upper 3GPP Management System interacts with the transport 
 network for establishing the necessary slices at the transport level. Such interaction can be expected 
-to happen using the transport slice intent, described to an intent-based system (IBS) in the transport 
+to happen using the IETF network slice intent, described to an intent-based system (IBS) in the transport 
 network part. Then, according to the intent lifecycle in <xref target="I-D.irtf-nmrg-ibn-concepts-definitions" />, the IBS, after recognizing the intent, will proceed 
-to translate it in order to interact with a transport slice controller by using a NBI as proposed in <xref target="I-D.contreras-teas-slice-nbi" />.
+to translate it in order to interact with a IETF network slice controller by using a NBI as proposed in <xref target="I-D.contreras-teas-slice-nbi" />.
    </t>
 
 </section>
@@ -275,23 +272,23 @@ to translate it in order to interact with a transport slice controller by using 
 
 <!-- Section 4. Mechanisms for translating transport slice intents -->
 
-<section title="Mechanisms for translating transport slice intents">
+<section title="Mechanisms for translating IETF network slice intents">
 
     <t>
-This section describes approaches for implementing mechanisms to translate transport slice intents.
+This section describes approaches for implementing mechanisms to translate IETF network slice intents.
    </t>
 
 <!-- Section 4.1. Translation approaches and interaction with the upper systems -->
 <section title="Translation approaches and interaction with the upper systems">
 
     <t>
-A suite of mechanisms will be required to allow instantiation of the user’s intent into a transport slice. 
+A suite of mechanisms will be required to allow instantiation of the user’s intent into a IETF network slice. 
 In order to be able to deliver an end2end Intent driven slice - a well defined set of context aware attributes that allow unambiguous instantiation of the intent should be agreed upon.
 A combination of a structured set of attributes communicated between an IBN and an upper layer system with user input would allow an IBN to have intent modeled and reason about its completeness/validity.
 Translation approaches and interaction with the upper systems might benefit from Natural Language Processing (NLP) technics that are needed for enabling high level expression of requirements found missing.
 
 The goal would be to identify and classify the answers for as many fields as possible from the Generic Slice Template (GST), based on the free text / speech 
-provided by the user. As it is highly unlikely that the minimum set of fields to properly define a transport slice (geo-temporal 
+provided by the user. As it is highly unlikely that the minimum set of fields to properly define an IETF network slice (geo-temporal 
 characteristics, performance characteristics, SLO and SLA properties) will be fulfilled in this first step, a follow up two-step approach 
 might need to be implemented.
    </t>
@@ -377,7 +374,7 @@ This draft does not include any IANA considerations
 
       &I-D.contreras-teas-slice-nbi;
       &I-D.irtf-nmrg-ibn-concepts-definitions;
-      &I-D.nsdt-teas-transport-slice-definition;
+      &I-D.nsdt-teas-ietf-network-slice-definition;
 
      <reference anchor="TS28.541">
         <front>
